@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useSelector } from 'react-redux'
 import styles from '../styles/Home.module.css'
+import { NavbarContainer } from './components/Navbar/Navbar.container'
 
 export default function Home() {
-  return (
+  const mode = useSelector(state => state.screenModeReducer)
+  return (<>
+  <NavbarContainer/>
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -14,6 +18,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
+          {mode.bool?'dark':'light'}
         </h1>
 
         <p className={styles.description}>
@@ -65,5 +70,6 @@ export default function Home() {
         </a>
       </footer>
     </div>
+    </>
   )
 }
