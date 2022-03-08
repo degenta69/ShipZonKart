@@ -2,7 +2,7 @@ import { SCREEN_MODE } from "../types";
 
 export default function screenModeReducer(
   state = {
-    bool: true,
+    bool: false,
   },
   action
 ) {

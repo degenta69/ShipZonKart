@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'font-name';
+  src: url('/fonts/Akufadhl-Kruda Black Slanted.otf'); 
+  /* // pattern: /directoryName/file.extension */
+ }
+
+/* In your css file where you want to use the font */
+.logo-font { 
+ font-family: 'font-name';
+}
 /* html,
 body {
   padding: 0;
