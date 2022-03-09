@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components{
+ 
+}
+
 @font-face {
   font-family: 'font-name';
   src: url('/fonts/Akufadhl-Kruda Black Slanted.otf'); 

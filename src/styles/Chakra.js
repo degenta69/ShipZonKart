@@ -4,13 +4,13 @@ import {
   localStorageManager,
 } from "@chakra-ui/react";
 
-export function Chakra({ cookies, children }) {
+export function Chakra({ theme, cookies, children }) {
   // b) Pass `colorModeManager` prop
   const colorModeManager =
     cookies === "string" ? cookieStorageManager(cookies) : localStorageManager;
 
   return (
-    <ChakraProvider colorModeManager={colorModeManager}>
+    <ChakraProvider theme={theme} colorModeManager={colorModeManager}>
       {children}
     </ChakraProvider>
   );

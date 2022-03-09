@@ -1,7 +1,7 @@
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     // minHeight: {
@@ -19,7 +19,22 @@ module.exports = {
     //   button_netflex: '#1f1e1e'
     // }),
     extend: {
-
+      screens: {
+        'MAX2xl': {'max': '1535px'},
+        // => @media (max-width: 1535px) { ... }
+  
+        'MAXxl': {'max': '1279px'},
+        // => @media (max-width: 1279px) { ... }
+  
+        'MAXlg': {'max': '1023px'},
+        // => @media (max-width: 1023px) { ... }
+  
+        'MAXmd': {'max': '767px'},
+        // => @media (max-width: 767px) { ... }
+  
+        'MAXsm': {'max': '639px'},
+        // => @media (max-width: 639px) { ... }
+      },
     }
   },
   // variants: {

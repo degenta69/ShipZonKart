@@ -11,7 +11,7 @@ export const register = ({ firstname, lastname, mobile_no, email_id, password, c
     axios.post(`/${type}`, {firstname, lastname, mobile_no, email_id, password, confirm_password })
       .then((response) => {
         Router.push('/signin');
-        console.log(response.data.meta.message);
+        // console.log(response.data.meta.message);
       })
       .catch((err) => {
         switch (error.response.status) {
