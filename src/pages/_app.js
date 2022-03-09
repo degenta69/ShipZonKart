@@ -37,13 +37,13 @@ const MyApp = (props) => {
 const makeStore = () => store;
 const wrapper = createWrapper(makeStore);
 
-MyApp.GetInitialProps = async ({ Component, ctx })=>{
-  const appProps = Component.GetInitialProps
-    ? await Component.GetInitialProps(ctx)
-    : {};
-  console.log(appProps);
-  console.log("HI I AM _APP.JS");
-  return { appProps };
-}
+// MyApp.GetInitialProps = async ({ Component, ctx })=>{
+//   const appProps = Component.GetInitialProps
+//     ? await Component.GetInitialProps(ctx)
+//     : {};
+//   console.log(appProps);
+//   console.log("HI I AM _APP.JS");
+//   return { appProps };
+// }
 
 export default wrapper.withRedux(MyApp);
