@@ -1,16 +1,16 @@
 import React from "react";
-
+import { NavbarContainer } from "../components/Navbar/Navbar.container";
+import {
+  Box, List, ListItem, Stack, Tab, TabList,
+} from "@chakra-ui/react";
 const Home = () => {
   return (
     <>
-      <div className="h-max w-full">
-        {/* <p> iainicback</p>
-        <p> iainicback</p>
-        <p> iainicback</p>
-        <p> iainicback</p>
-        <p> iainicback</p>
-        <p> iainicback</p> */}
-      </div>
+      <Box className="h-screen">
+        <NavbarContainer/>
+        <Box spacing={3} className="btmList"> iainicback</Box>
+        <Box spacing={3} className="btmList"> iainicback</Box>
+      </Box>
     </>
   );
 };

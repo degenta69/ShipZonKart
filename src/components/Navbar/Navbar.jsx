@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import {
   Box,
@@ -20,9 +20,11 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, SearchIcon, SunIcon } from "@chakra-ui/icons";
 import Image from "next/image";
-import { ShoppingCartIcon } from "@heroicons/react/outline";
+import { MenuIcon, ShoppingCartIcon } from "@heroicons/react/outline";
 import { LoginIcon } from "@heroicons/react/solid";
 import { UserCircleIcon } from "@heroicons/react/solid";
+import {useGetCategories} from '../../hooks/useGetCategories'
+import ClientOnly from "../../helper/ClientOnly";
 
 const Navbar = (props) => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -36,8 +38,12 @@ const Navbar = (props) => {
     toggleColorMode();
   };
 
+  const data = useGetCategories({})??[]
+  console.log('hi i am navbar component',data)
+
   return (
     <>
+    <ClientOnly>
     <Box key={'navbarContainerClass'} className="navbarContainerClass">
       <Box
         bg={useColorModeValue("gray.200", "gray.900")}
@@ -180,13 +186,20 @@ const Navbar = (props) => {
           </Flex>
         </Flex>
       </Box>
-      <Box className="h-12 flex flex-grow bottomNav w-full" style={{background:useColorModeValue('yellow','#242F3E')}}>
-                    <div className="btmList">h</div>
-                    <div className="btmList">i</div>
-                    <div className="btmList">e</div>
-                    <div className="btmList">f</div>
-        </Box>
+          <Flex gap={[5,9,12]} alignItems={"center"} className="sapce-x-3 p-2 pl-6 text-sm flex-grow bottomNav w-full" style={{background:useColorModeValue('yellow','#242F3E')}}>
+                    <Flex alignItems={"center"}>
+                      <MenuIcon className="h-4"/>All
+                    </Flex>
+                    <Flex gap={[2,4,8]}>
+                    {data.map((categorie)=>{
+                      return(
+                        <Box spacing={3} className="btmList">{categorie}</Box>
+                        )
+                      })}
+                    </Flex>
+        </Flex>
       </Box>
+      </ClientOnly>
     </>
   );
 };
