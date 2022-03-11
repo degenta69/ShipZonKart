@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-export const useGetCategories = ({ category , limit=null,sort='asc' ,processData }) => {
+export const useGetPhotoFromQuery = ({ query ,  page=1, client_id },processData) => {
   // Response state
   const [data, setData] = useState();
 
@@ -17,12 +17,12 @@ export const useGetCategories = ({ category , limit=null,sort='asc' ,processData
     const fetchApi = async () => {
       try {
         // Fetch data from REST API
-        const response = await fetch(category?`https://fakestoreapi.com/products/category/${category}?limit=${limit}&sort=${sort}`:'https://fakestoreapi.com/products/categories');
+        const response = await fetch(query?`https://api.unsplash.com/search/photos?client_id=${client_id}&page=${page}&query=${query.replace(/\s/g,'%20')}`:`https://api.unsplash.com/search/photos?client_id=${client_id}&page=${page}&query=random`,{mode:'cors'});
 
         if (response.status === 200) {
           // Extract json
           const rawData = await response.json();
-          console.log('hi i am getcathook',rawData);
+          console.log('hi i am unsplash hook',rawData);
           const processedData = processJson(rawData);
           setData(processedData);
         } else {
