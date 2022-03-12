@@ -31,6 +31,7 @@ import { UserCircleIcon } from "@heroicons/react/solid";
 import { useGetCategories } from "../../hooks/useGetCategories";
 import ClientOnly from "../../helper/ClientOnly";
 import { useMediaQuery } from "@chakra-ui/react";
+import Loader from "../Loader/Loader";
 
 const Navbar = (props) => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -263,7 +264,9 @@ const Navbar = (props) => {
                           <ArrowDownIcon />
                         </Box>
                       </Box>
-                      <Box
+                      <Box  
+                      key={i}
+                      zIndex={"tooltip"}
                         display={"none"}
                         transitionDelay={"0.5s"}
                         transition={"all"}
@@ -297,6 +300,11 @@ const Navbar = (props) => {
                             dropdownData.length}{" "}
                           Items
                           <Divider />
+                          {dropdownData[0].category !== categorie &&
+                          <Flex className="mx-auto w-full p-2" alignItems={"center"}>
+                          <Loader  border={10} />
+                          </Flex>
+                          }
                           <Box>
                             {dropdownData[0].category === categorie &&
                               dropdownData.map((item, i) => {

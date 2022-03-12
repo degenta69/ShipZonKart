@@ -20,14 +20,13 @@ const colors = {
 
 const theme = extendTheme({ colors });
 
-const MyApp = (props) => {
+const MyApp = ({ Component, pageProps }) => {
 
-    const { Component, appProps } = props
-    // console.log(Component, appProps);
+    // console.log(Component, pageProps);
     return (
       <Provider store={store}>
-        <Chakra theme={theme} cookies={appProps?.cookies}>
-          <Component {...appProps} />
+        <Chakra theme={theme} cookies={pageProps?.cookies}>
+          <Component {...pageProps} />
         </Chakra>
       </Provider>
     );
@@ -36,13 +35,13 @@ const MyApp = (props) => {
 const makeStore = () => store;
 const wrapper = createWrapper(makeStore);
 
-MyApp.getInitialProps = async ({ Component, ctx })=>{
-  const appProps = Component.getInitialProps
-    ? await Component.getInitialProps(ctx)
+MyApp.getInitialProps = async ({ Component, ctx }) => {
+  const pageProps = Component.getInitialProps
+    ? Component.getInitialProps(ctx)
     : {};
-  console.log(appProps);
+  // console.log(pageProps);
   console.log("HI I AM _APP.JS");
-  return { appProps };
-}
+  return { pageProps };
+};
 
 export default wrapper.withRedux(MyApp)
